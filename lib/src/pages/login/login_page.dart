@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery_mysql/src/pages/login/login_controlller.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginController con = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,7 @@ class LoginPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: TextField(
+        controller: con.emailController,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: 'Masukan Email anda', prefixIcon: Icon(Icons.email)),
@@ -87,6 +90,7 @@ class LoginPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: TextField(
+        controller: con.passwordController,
         keyboardType: TextInputType.text,
         obscureText: true,
         decoration: InputDecoration(
@@ -100,7 +104,7 @@ class LoginPage extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 40, vertical: 30),
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () => con.login(),
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: 12)),
           child: Text('LOGIN',
@@ -120,9 +124,14 @@ class LoginPage extends StatelessWidget {
         SizedBox(
           width: 7,
         ),
-        Text('Register disini',
-            style: TextStyle(
-                color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 17))
+        GestureDetector(
+          onTap: () => con.goToRegisterPage(),
+          child: Text('Register disini',
+              style: TextStyle(
+                  color: Colors.amber,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17)),
+        )
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_mysql/src/pages/login/login_page.dart';
+import 'package:food_delivery_mysql/src/pages/register/register_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -26,9 +27,15 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Delivery Udemy',
         initialRoute: '/',
-        getPages: [GetPage(name: '/', page: () => LoginPage())],
+        getPages: [
+          // ignore: prefer_const_constructors
+          GetPage(name: '/', page: () => LoginPage()),
+          // ignore: prefer_const_constructors
+          GetPage(name: '/register', page: () => RegisterPage())
+        ],
         theme: ThemeData(
             primaryColor: Colors.amber,
+            // ignore: prefer_const_constructors
             colorScheme: ColorScheme(
                 secondary: Colors.amberAccent,
                 primary: Colors.amber,
